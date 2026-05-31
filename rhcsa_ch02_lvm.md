@@ -38,29 +38,29 @@ This is why every RHEL production server uses LVM by default.
 ║  LVM ARCHITECTURE — THREE LAYERS                                     ║
 ╠══════════════════════════════════════════════════════════════════════╣
 ║                                                                      ║
-║  LAYER 3: LOGICAL VOLUMES (LV) — What you use                       ║
-║  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                 ║
-║  │  lv_root    │  │  lv_home    │  │  lv_data    │  ← /dev/vg0/... ║
-║  │  /dev/vg0/  │  │  /dev/vg0/  │  │  /dev/vg0/  │                 ║
-║  │  lv_root    │  │  lv_home    │  │  lv_data    │                 ║
-║  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘                 ║
-║         └────────────────┴─────────────────┘                        ║
+║  LAYER 3: LOGICAL VOLUMES (LV) — What you use                        ║
+║  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                   ║
+║  │  lv_root    │  │  lv_home    │  │  lv_data    │  ← /dev/vg0/...   ║
+║  │  /dev/vg0/  │  │  /dev/vg0/  │  │  /dev/vg0/  │                   ║
+║  │  lv_root    │  │  lv_home    │  │  lv_data    │                   ║
+║  └──────┬──────┘  └──────┬──────┘  └──────┬──────┘                   ║
+║         └────────────────┴─────────────────┘                         ║
 ║                          │                                           ║
 ╠══════════════════════════╪═══════════════════════════════════════════╣
-║  LAYER 2: VOLUME GROUP (VG) — The pool                              ║
-║  ┌───────────────────────┴──────────────────────────────────────┐   ║
-║  │  vg0  (40GB total pool of Physical Extents)                  │   ║
-║  │  ████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │   ║
-║  │  [used by LVs above]        [free PEs available for growth]  │   ║
-║  └───────────────────┬──────────────────────────────────────────┘   ║
+║  LAYER 2: VOLUME GROUP (VG) — The pool                               ║
+║  ┌───────────────────────┴──────────────────────────────────────┐    ║
+║  │  vg0  (40GB total pool of Physical Extents)                  │    ║
+║  │  ████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │     ║
+║  │  [used by LVs above]        [free PEs available for growth]  │    ║
+║  └───────────────────┬──────────────────────────────────────────┘    ║
 ║                      │                                               ║
 ╠══════════════════════╪═══════════════════════════════════════════════╣
-║  LAYER 1: PHYSICAL VOLUMES (PV) — The raw storage                   ║
-║  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐        ║
-║  │  /dev/sdb      │  │  /dev/sdc1     │  │  /dev/sdd      │        ║
-║  │  (whole disk)  │  │  (partition)   │  │  (whole disk)  │        ║
-║  └────────────────┘  └────────────────┘  └────────────────┘        ║
-║  ← Physical disks or partitions marked as LVM PVs ──────────────── ║
+║  LAYER 1: PHYSICAL VOLUMES (PV) — The raw storage                    ║
+║  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐          ║
+║  │  /dev/sdb      │  │  /dev/sdc1     │  │  /dev/sdd      │          ║
+║  │  (whole disk)  │  │  (partition)   │  │  (whole disk)  │          ║
+║  └────────────────┘  └────────────────┘  └────────────────┘          ║
+║  ← Physical disks or partitions marked as LVM PVs ────────────────   ║
 ╚══════════════════════════════════════════════════════════════════════╝
 ```
 
